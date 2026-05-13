@@ -30,7 +30,7 @@ const CartPage = () => {
       <main className="pt-[130px] pb-20">
         <Container>
           <div className="flex flex-col items-center justify-center py-20 h-[60vh] rounded-tl-[6px] rounded-br-[44px]">
-            <div className="bg-[#E6E5E5] p-6 rounded-full mb-5">
+            <div className="bg-[#E6E5E5] p-6 rounded-full mb-6">
               <ShoppingCartSimple
                 size={64}
                 weight="thin"
