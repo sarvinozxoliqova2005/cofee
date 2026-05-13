@@ -2,7 +2,7 @@
 
 import { useCartStore } from "@/app/store/useStoreCart";
 import { useState, useEffect, useMemo } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import korzinka from "../public/korzinka.png";
 import Container from "./Container";
@@ -66,16 +66,16 @@ const CoffeeCard = ({ el, index }: CoffeeProps) => {
   const itemTotal = el.price * itemQuantity;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="bg-[#F3F2F2] rounded-tl-[6px] rounded-br-[36px] cursor-pointer p-5 flex flex-col items-center text-center relative mt-10"
     >
-      <motion.div 
+      <motion.div
         className="mt-[-45px] mb-3"
-        whileHover={{ scale: 1.1, rotate: 5 }} 
+        whileHover={{ scale: 1.1, rotate: 5 }}
         transition={{ type: "spring", stiffness: 200 }}
       >
         <Image
@@ -84,9 +84,6 @@ const CoffeeCard = ({ el, index }: CoffeeProps) => {
           width={120}
           height={120}
           className="w-[120px] h-[120px] object-contain cursor-pointer"
-          onError={(e) => {
-            e.target.src = "https://via.placeholder.com/120?text=Coffee";
-          }}
         />
       </motion.div>
 
@@ -120,7 +117,7 @@ const CoffeeCard = ({ el, index }: CoffeeProps) => {
         <div className="flex items-center gap-2">
           {!isAdded && (
             <motion.button
-              whileTap={{ scale: 0.9 }} 
+              whileTap={{ scale: 0.9 }}
               onClick={handleAddToCart}
               className="bg-[#4B2995] p-2 rounded-md hover:bg-[#8047F8] transition-colors cursor-pointer"
             >
@@ -161,26 +158,124 @@ const CoffeeCard = ({ el, index }: CoffeeProps) => {
 
 const Coffies = () => {
   const coffees = [
-    { id: 1, tags: ["TRADITIONAL"], names: "Traditional Espresso", desc: "The traditional coffee made with hot water and ground beans", price: 9.9, image: "/cooffe1.png" },
-    { id: 2, tags: ["TRADITIONAL"], names: "American Espresso", desc: "Diluted espresso, less intense than the traditional one", price: 9.9, image: "/coffee2.png" },
-    { id: 3, tags: ["TRADITIONAL"], names: "Creamy Espresso", desc: "Traditional espresso coffee with creamy foam", price: 9.9, image: "/coffee3.png" },
-    { id: 4, tags: ["TRADITIONAL", "ICED"], names: "Iced Espresso", desc: "Drink prepared with espresso coffee and ice cubes", price: 9.9, image: "/coffee4.png" },
-    { id: 5, tags: ["TRADITIONAL", "WITH MILK"], names: "Coffee with Milk", desc: "Half and half of traditional espresso with steamed milk", price: 9.9, image: "/coffee5.png" },
-    { id: 6, tags: ["TRADITIONAL", "WITH MILK"], names: "Latte", desc: "A shot of espresso with double the milk and creamy foam", price: 9.9, image: "/coffee6.png" },
-    { id: 7, tags: ["TRADITIONAL", "WITH MILK"], names: "Capuccino", desc: "Drink with cinnamon made from equal parts of coffee, milk and foam", price: 9.9, image: "/coffee7.png" },
-    { id: 8, tags: ["TRADITIONAL", "WITH MILK"], names: "Macchiato", desc: "Espresso coffee mixed with a little hot milk and foam", price: 9.9, image: "/coffee8.png" },
-    { id: 9, tags: ["TRADITIONAL", "WITH MILK"], names: "Mocaccino", desc: "Espresso coffee with chocolate sauce, a little milk and foam", price: 9.9, image: "/coffee9.png" },
-    { id: 10, tags: ["SPECIAL", "WITH MILK"], names: "Hot Chocolate", desc: "Drink made with chocolate dissolved in hot milk and coffee", price: 9.9, image: "/coffee10.png" },
-    { id: 11, tags: ["SPECIAL", "ALCOHOLIC", "ICED"], names: "Cubano", desc: "Iced drink of espresso coffee with rum, cream and mint", price: 9.9, image: "/coffee11.png" },
-    { id: 12, tags: ["SPECIAL"], names: "Hawaiian", desc: "Sweetened drink prepared with coffee and coconut milk", price: 9.9, image: "/coffee12.png" },
-    { id: 13, tags: ["SPECIAL"], names: "Arabic", desc: "Drink prepared with Arabic coffee beans and spices", price: 9.9, image: "/coffee13.png" },
-    { id: 14, tags: ["SPECIAL", "ALCOHOLIC"], names: "Irish", desc: "Drink based on coffee, Irish whiskey, sugar and whipped cream", price: 9.9, image: "/coffee14.png" },
+    {
+      id: 1,
+      tags: ["TRADITIONAL"],
+      names: "Traditional Espresso",
+      desc: "The traditional coffee made with hot water and ground beans",
+      price: 9.9,
+      image: "/cooffe1.png",
+    },
+    {
+      id: 2,
+      tags: ["TRADITIONAL"],
+      names: "American Espresso",
+      desc: "Diluted espresso, less intense than the traditional one",
+      price: 9.9,
+      image: "/coffee2.png",
+    },
+    {
+      id: 3,
+      tags: ["TRADITIONAL"],
+      names: "Creamy Espresso",
+      desc: "Traditional espresso coffee with creamy foam",
+      price: 9.9,
+      image: "/coffee3.png",
+    },
+    {
+      id: 4,
+      tags: ["TRADITIONAL", "ICED"],
+      names: "Iced Espresso",
+      desc: "Drink prepared with espresso coffee and ice cubes",
+      price: 9.9,
+      image: "/coffee4.png",
+    },
+    {
+      id: 5,
+      tags: ["TRADITIONAL", "WITH MILK"],
+      names: "Coffee with Milk",
+      desc: "Half and half of traditional espresso with steamed milk",
+      price: 9.9,
+      image: "/coffee5.png",
+    },
+    {
+      id: 6,
+      tags: ["TRADITIONAL", "WITH MILK"],
+      names: "Latte",
+      desc: "A shot of espresso with double the milk and creamy foam",
+      price: 9.9,
+      image: "/coffee6.png",
+    },
+    {
+      id: 7,
+      tags: ["TRADITIONAL", "WITH MILK"],
+      names: "Capuccino",
+      desc: "Drink with cinnamon made from equal parts of coffee, milk and foam",
+      price: 9.9,
+      image: "/coffee7.png",
+    },
+    {
+      id: 8,
+      tags: ["TRADITIONAL", "WITH MILK"],
+      names: "Macchiato",
+      desc: "Espresso coffee mixed with a little hot milk and foam",
+      price: 9.9,
+      image: "/coffee8.png",
+    },
+    {
+      id: 9,
+      tags: ["TRADITIONAL", "WITH MILK"],
+      names: "Mocaccino",
+      desc: "Espresso coffee with chocolate sauce, a little milk and foam",
+      price: 9.9,
+      image: "/coffee9.png",
+    },
+    {
+      id: 10,
+      tags: ["SPECIAL", "WITH MILK"],
+      names: "Hot Chocolate",
+      desc: "Drink made with chocolate dissolved in hot milk and coffee",
+      price: 9.9,
+      image: "/coffee10.png",
+    },
+    {
+      id: 11,
+      tags: ["SPECIAL", "ALCOHOLIC", "ICED"],
+      names: "Cubano",
+      desc: "Iced drink of espresso coffee with rum, cream and mint",
+      price: 9.9,
+      image: "/coffee11.png",
+    },
+    {
+      id: 12,
+      tags: ["SPECIAL"],
+      names: "Hawaiian",
+      desc: "Sweetened drink prepared with coffee and coconut milk",
+      price: 9.9,
+      image: "/coffee12.png",
+    },
+    {
+      id: 13,
+      tags: ["SPECIAL"],
+      names: "Arabic",
+      desc: "Drink prepared with Arabic coffee beans and spices",
+      price: 9.9,
+      image: "/coffee13.png",
+    },
+    {
+      id: 14,
+      tags: ["SPECIAL", "ALCOHOLIC"],
+      names: "Irish",
+      desc: "Drink based on coffee, Irish whiskey, sugar and whipped cream",
+      price: 9.9,
+      image: "/coffee14.png",
+    },
   ];
 
   return (
     <section className="py-20">
       <Container>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
