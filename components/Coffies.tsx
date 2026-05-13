@@ -3,8 +3,23 @@
 import { useCartStore } from "@/app/store/useStoreCart";
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion"; 
+import Image from "next/image";
+import korzinka from "../public/korzinka.png";
+import Container from "./Container";
 
-const CoffeeCard = ({ el, index }) => {
+interface CoffeeProps {
+  el: {
+    id: number;
+    names: string;
+    desc: string;
+    price: number;
+    image: string;
+    tags: string[];
+  };
+  index: number;
+}
+
+const CoffeeCard = ({ el, index }: CoffeeProps) => {
   const [amount, setAmount] = useState(1);
 
   const cart = useCartStore((state) => state.cart);
@@ -63,9 +78,11 @@ const CoffeeCard = ({ el, index }) => {
         whileHover={{ scale: 1.1, rotate: 5 }} 
         transition={{ type: "spring", stiffness: 200 }}
       >
-        <img
+        <Image
           src={el.image}
           alt={el.names}
+          width={120}
+          height={120}
           className="w-[120px] h-[120px] object-contain cursor-pointer"
           onError={(e) => {
             e.target.src = "https://via.placeholder.com/120?text=Coffee";
@@ -107,10 +124,12 @@ const CoffeeCard = ({ el, index }) => {
               onClick={handleAddToCart}
               className="bg-[#4B2995] p-2 rounded-md hover:bg-[#8047F8] transition-colors cursor-pointer"
             >
-              <img
-                src="/korzinka.png"
+              <Image
+                src={korzinka}
                 alt="Cart"
-                className="w-5 h-5 invert brightness-0"
+                width={25}
+                height={25}
+                className="invert brightness-0"
               />
             </motion.button>
           )}
@@ -160,22 +179,22 @@ const Coffies = () => {
 
   return (
     <section className="py-20">
-      <div className="container mx-auto px-4">
+      <Container>
         <motion.h2 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-[#403937] mb-12 font-title"
+          className="text-3xl md:text-3xl max-[600px]:text-center font-bold text-[#403937] mb-12 font-title"
         >
           Our coffees
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8  max-[600px]:px-2">
           {coffees.map((coffee, index) => (
             <CoffeeCard key={coffee.id} el={coffee} index={index} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

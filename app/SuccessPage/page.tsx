@@ -3,6 +3,8 @@
 import React from "react";
 import { MapPin, Timer, CurrencyDollar } from "phosphor-react";
 import Container from "@/components/Container";
+import Image from "next/image";
+import rasm1 from "../../public/rasm1.png"
 
 const SuccessPage = () => {
 
@@ -59,9 +61,11 @@ const SuccessPage = () => {
               </div>
             </div>
             <div className="flex-1 flex justify-center lg:justify-end">
-              <img
-                src="rasm1.png"
+              <Image
+                src={rasm1}
                 alt="Delivery person on a scooter"
+                width={492}
+                height={300}
                 className="w-full max-w-[492px] h-auto object-contain"
               />
             </div>

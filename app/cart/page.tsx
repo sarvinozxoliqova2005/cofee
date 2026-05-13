@@ -13,6 +13,7 @@ import {
 } from "phosphor-react";
 import Container from "@/components/Container";
 import Link from "next/link";
+import Image from "next/image";
 
 const CartPage = () => {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
@@ -56,13 +57,13 @@ const CartPage = () => {
   return (
     <main className="pt-[130px] pb-20">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start max-[600px]:px-2">
           <div className="flex-1 flex flex-col gap-3 w-full">
-            <h2 className="text-xl font-bold text-[#403937]">
+            <h2 className="text-xl font-bold md:text-3xl text-[#403937]">
               Complete your order
             </h2>
-            <div className="bg-[#F3F2F2] p-10 rounded-md flex flex-col gap-8">
-              <div className="flex gap-2">
+            <div className="bg-[#F3F2F2] p-10 rounded-md flex flex-col gap-8 ">
+              <div className="flex gap-2 ">
                 <MapPin size={22} className="text-[#C47F17]" />
                 <div>
                   <p className="text-[#403937]">Delivery Address</p>
@@ -152,9 +153,11 @@ const CartPage = () => {
                     className="flex justify-between items-start pb-6 border-b border-[#E6E5E5]"
                   >
                     <div className="flex gap-5">
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.names}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 object-contain"
                       />
                       <div className="flex flex-col gap-2">
