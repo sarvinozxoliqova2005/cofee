@@ -21,10 +21,10 @@ const HomePage = () => {
               className="max-w-[588px] text-center lg:text-left order-2 lg:order-1"
               initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
             >
-              <h1 className="text-[32px] md:text-[48px] font-extrabold text-[#272221] font-title leading-tight">
+              <h1 className="text-[32px] max-[900px]:text-[28px] max-[750px]:text-[26px] max-[600px]:text-[24px] max-[500px]:text-[22px] font-extrabold text-[#272221] font-title leading-tight">
                 Find the perfect coffee for any time of day
               </h1>
-              <p className="text-lg md:text-[20px] text-[#403937] mt-4 font-roboto">
+              <p className="text-lg max-[600px]:text-sm text-[#403937] mt-4 font-roboto">
                 With Coffee Delivery, you receive your coffee wherever you are, at any time.
               </p>
 
