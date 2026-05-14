@@ -40,7 +40,7 @@ const Header = () => {
       className="bg-white/80 backdrop-blur-md shadow-sm fixed z-50 left-0 top-0 right-0"
     >
       <Container>
-        <div className="flex items-center justify-between h-16 md:h-20 px-2 md:px-0">
+        <div className="flex items-center justify-between h-16 md:h-15 px-2 md:px-0">
           <Link
             href="/"
             className="transition-transform hover:scale-105 active:scale-95 shrink-0"
